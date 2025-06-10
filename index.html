@@ -1,131 +1,28 @@
-     
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deeksha Brainrot Text Rewriter</title>
+  <title>Deeksha Text Generator</title>
   <style>
-    :root {
-      --bg: #fdf6ff;
-      --fg: #333;
-    }
-    [data-theme="dark"] {
-      --bg: #1a1a1a;
-      --fg: #eee;
-    }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Arial', sans-serif;
-      padding: 2rem;
-      transition: background 0.3s, color 0.3s;
-    }
-    textarea {
-      width: 100%; max-width: 600px;
-      height: 150px;
-      padding: 10px;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-right: 10px;
-      padding: 10px 20px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .btn-primary { background: #ff69b4; color: #fff; }
-    .btn-secondary { background: #555; color: #fff; }
-    #output {
-      margin-top: 1.5rem;
-      white-space: pre-wrap;
-      font-size: 1.2em;
-      line-height: 1.4;
-    }
+    body { font-family: Helvetica, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; }
+    textarea { width: 90%; max-width: 600px; height: 150px; font-size: 1.2em; margin-bottom: 1rem; padding: 10px; }
+    button { padding: 10px 20px; font-size: 1em; cursor: pointer; background: #000; color: #fff; border: none; border-radius: 5px; }
+    .output { margin-top: 20px; font-size: 1.2em; white-space: pre-line; }
   </style>
 </head>
-<body data-theme="light">
-  <h1>🧠 Deeksha's Brainrot Text Rewriter ✨</h1>
-  
-  <textarea id="input" placeholder="Paste your boring text here..."></textarea><br>
-
-  <button class="btn-primary" onclick="translate('genz')">Slayify Gen-Z/α</button>
-  <button class="btn-secondary" onclick="translate('shakespeare')">🍃 Shakespeare Mode</button>
-  <button class="btn-secondary" onclick="translate('sarcasm')">💀 Sarcasm Mode</button>
-  <button class="btn-secondary" onclick="translate('kdrama')">K‑Drama Mode</button>
-  <button class="btn-secondary" onclick="toggleTheme()">🌓 Dark/Light</button>
-  <button class="btn-secondary" onclick="copyOutput()">📋 Copy Text</button>
-
-  <div id="output"></div>
+<body>
+  <h1>Deeksha Text Generator ✨</h1>
+  <textarea id="inputText" placeholder="Type your text here..."></textarea><br>
+  <button onclick="generateText()">Gen Z It</button>
+  <div class="output" id="output"></div>
 
   <script>
-    const maps = {
-      genz: {
-        "therefore": "so like",
-        "in conclusion": "so yeah basically",
-        "however": "but like fr",
-        "for example": "like, say",
-        "important": "kinda a big deal ngl",
-        "difficult": "lowkey hard",
-        "easy": "light work",
-        "boring": "dry af",
-        "understand": "get it like fr",
-        "because": "cuz duh"
-      },
-      shakespeare: {
-        "you": "thou",
-        "your": "thy",
-        "are": "art",
-        "have": "hast",
-        "do": "doth",
-        "does": "doth",
-        "not": "naught",
-        "hello": "hail",
-        "goodbye": "fare thee well",
-        "love": "doth adore"
-      },
-      sarcasm: {
-        "great": "oh great",
-        "wonderful": "absolutely wonderful",
-        "nice": "nice…",
-        "sure": "sure, why not?",
-        "yes": "yeah, totally",
-        "no": "nope",
-        "happy": "overjoyed (not)",
-        "interesting": "thrilling"
-      },
-      kdrama: {
-        "friend": "my most precious",
-        "sad": "my poor heart is shattered",
-        "happy": "my soul is singing",
-        "hate": "i loathe you with every fiber",
-        "love": "i burn for your gaze",
-        "promise": "i swear on my ancestors"
-      }
-    };
-
-    function translate(mode) {
-      let text = document.getElementById('input').value;
-      const map = maps[mode];
-      for (let key in map) {
-        text = text.replace(new RegExp("\\b"+key+"\\b", "gi"), map[key]);
-      }
-      document.getElementById('output').innerText = text;
-    }
-
-    function toggleTheme() {
-      const el = document.body;
-      el.setAttribute('data-theme', el.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-    }
-
-    function copyOutput() {
-      navigator.clipboard.writeText(document.getElementById('output').innerText)
-        .then(() => alert('Copied to clipboard! 🎉'))
-        .catch(() => alert('Oops, can't copy.'));
+    function generateText() {
+      const text = document.getElementById("inputText").value;
+      const formatted = text.split(/\s+/).join("     ");
+      document.getElementById("output").innerText = formatted;
     }
   </script>
 </body>
 </html>
+     
